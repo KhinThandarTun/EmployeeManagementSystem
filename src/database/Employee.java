@@ -1,13 +1,18 @@
 package database;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Employee {
     private int id;
     private String name;
     private double salary;
     private int age;
 
-    public Employee(){
+    private List<User> userList;
 
+    public Employee(){
+        this.userList = new ArrayList<>();
     }
 
     public Employee(int id, String name, double salary, int age) {
@@ -15,6 +20,19 @@ public class Employee {
         this.name = name;
         this.salary = salary;
         this.age = age;
+    }
+
+    public void registerUser(String username, String password){
+        userList.add(new User(username,password));
+    }
+
+    public boolean loginUser(String username, String password){
+        for (User user:userList){
+            if(user.getUsername().equals(username) && user.getPassword().equals(password)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getId() {
