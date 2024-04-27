@@ -2,13 +2,14 @@ package database;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Employee {
     private int id;
     private String name;
     private double salary;
     private int age;
-
+    private static String patternPw = "[A-Za-z]*[A-Z]+[A-Za-z]*[1-9]+[,<>.';:!@#$%^&*)(_\\-+=]";
     private List<User> userList;
 
     public Employee(){
@@ -23,6 +24,14 @@ public class Employee {
     }
 
     public void registerUser(String username, String password){
+        if(!password.matches(patternPw)){
+            System.out.println("\nYour password must have at least" +
+                    "\n one upper, lower, numbers and special character : ");
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter Password : ");
+            String pass = scanner.next();
+            userList.add(new User(username,pass));
+        }
         userList.add(new User(username,password));
     }
 

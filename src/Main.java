@@ -12,11 +12,17 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Register Page!!!");
 
+        System.out.print("Enter UserName : ");
+        String regUser = scanner.next();
+        System.out.print("Enter Password : ");
+        String regPassword = scanner.next();
+
+
         Employee employee = new Employee();
         //Register User
-        employee.registerUser("admin","admin@123");
-        employee.registerUser("user","user@123");
+        employee.registerUser(regUser,regPassword);
 
+        System.out.println("Welcome to Login Page!!!");
         //Login User
         System.out.print("Enter UserName : ");
         String userName = scanner.next();
